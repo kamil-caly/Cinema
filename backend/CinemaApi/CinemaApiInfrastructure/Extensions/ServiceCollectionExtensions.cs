@@ -1,4 +1,5 @@
 ﻿using CinemaApiInfrastructure.Persistence;
+using CinemaApiInfrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,8 @@ namespace CinemaApiInfrastructure.Extensions
                 configuration.GetConnectionString("Cinema"),
                 ServerVersion.AutoDetect(configuration.GetConnectionString("Cinema"))
             ));
+
+            services.AddScoped<CinemaApiSeeder>();
 
             return services;
         }
