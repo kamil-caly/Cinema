@@ -1,5 +1,6 @@
 ﻿using CinemaApiDomain.Entities;
 using CinemaApiInfrastructure.Persistence;
+using CinemaApiDomain.Entities.Enums;
 
 namespace CinemaApiInfrastructure.Seeders
 {
@@ -40,6 +41,39 @@ namespace CinemaApiInfrastructure.Seeders
             {
                 movies[_random.Next(movies.Count)].Seances.Add(seances[i]);
                 halls[_random.Next(halls.Count)].Seances.Add(seances[i]);
+            }
+
+            for (int i = 0; i < 20; i++)
+            {
+                var randomSeance = seances[_random.Next(seances.Count)];
+                var seanceHall = halls.FirstOrDefault(h => h.Seances.Contains(randomSeance));
+                if (seanceHall != null)
+                {
+                    double maxSeatRowNumber = Math.Sqrt(seanceHall.Capacity);
+                    var ticket = new Ticket
+                    {
+                        ReservationCode = Guid.NewGuid().ToString(),
+                        Status = TicketState.Valid,
+                        PurchaseDate = DateTime.Now,
+                        UserEmail = "test@testUser.com",
+                        Seats = new List<Seat>
+                        {
+                            new Seat()
+                            {
+                                Row = _random.Next((int)maxSeatRowNumber),
+                                Number = _random.Next((int)maxSeatRowNumber),
+                                VIP = false
+                            },
+                            new Seat()
+                            {
+                                Row = _random.Next((int)maxSeatRowNumber),
+                                Number = _random.Next((int)maxSeatRowNumber),
+                                VIP = false
+                            }
+                        }
+                    };
+                    randomSeance.Tickets.Add(ticket);
+                }
             }
 
             return (movies, halls);
