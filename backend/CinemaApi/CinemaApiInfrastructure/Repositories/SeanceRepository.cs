@@ -13,12 +13,14 @@ namespace CinemaApiInfrastructure.Repositories
         {
             _dbContext = dbContext;
         }
-        public async Task<IEnumerable<Seance>> GetAllWithDetailsForGivenDate(DateTime dateTime)
+        public async Task<IEnumerable<Seance>> GetAllWithDetailsForGivenArgs(DateTime dateTime, string? movieTitle)
         {
             return await _dbContext.Seances
                 .Include(s => s.Movie)  
                 .Include(s => s.Hall)  
-                .Where(s => s.Date > DateTime.Now && s.Date.Date == dateTime.Date)
+                .Where(s => s.Date > DateTime.Now 
+                    && s.Date.Date == dateTime.Date 
+                    && (string.IsNullOrEmpty(movieTitle) || s.Movie.Title.ToLower().Contains(movieTitle.ToLower())))
                 .OrderBy(s => s.Date)
                 .ToListAsync();
         }

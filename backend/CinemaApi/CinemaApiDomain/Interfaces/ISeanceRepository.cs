@@ -4,6 +4,6 @@ namespace CinemaApiDomain.Interfaces
 {
     public interface ISeanceRepository
     {
-        Task<IEnumerable<Seance>> GetAllWithDetailsForGivenDate(DateTime dateTime);
+        Task<IEnumerable<Seance>> GetAllWithDetailsForGivenArgs(DateTime dateTime, string? movieTitle);
     }
 }
