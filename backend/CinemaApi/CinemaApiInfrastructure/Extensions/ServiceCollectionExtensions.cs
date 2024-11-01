@@ -1,4 +1,6 @@
-﻿using CinemaApiInfrastructure.Persistence;
+﻿using CinemaApiDomain.Interfaces;
+using CinemaApiInfrastructure.Persistence;
+using CinemaApiInfrastructure.Repositories;
 using CinemaApiInfrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +18,8 @@ namespace CinemaApiInfrastructure.Extensions
             ));
 
             services.AddScoped<CinemaApiSeeder>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<ISeanceRepository, SeanceRepository>();
 
             return services;
         }

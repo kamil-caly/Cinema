@@ -15,4 +15,9 @@
     <ProjectReference Include="..\CinemaApiDomain\CinemaApiDomain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Movie\Commands\" />
+    <Folder Include="Seance\Commands\" />
+  </ItemGroup>
+
 </Project>
