@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Movie\Commands\" />
     <Folder Include="Seance\Commands\" />
+    <Folder Include="Seat\Commands\" />
   </ItemGroup>
 
 </Project>
