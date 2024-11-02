@@ -3,3 +3,4 @@
 3) Pobieranie seansów na wskazany dzień (data seansu musi być pozniejsza od akutalnej daty). ✔
 4) Pobieranie seansów dla konkretnego filmu (filtr po tytule), na wskazany dzień (data seansu musi być pozniejsza od akutalnej daty). ✔
 5) Pobieranie zarezerwowanych miejsc w sali w ramach wybranego seansu. ✔
+6) SetUp projektu frontend wraz z tailwind css. 
