@@ -1,12 +1,22 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
 
-function App() {
+import MoviesPage from './pages/Movies/MoviesPage';
+import SeancesPage from './pages/Seances/Seances';
+
+const App: React.FC = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <Router>
+      <Navbar />
+      <div className='pt-16'> {/* Dodajemy odstęp od góry dla treści */}
+        <Routes>
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/seances" element={<SeancesPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

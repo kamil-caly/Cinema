@@ -108,7 +108,7 @@ namespace CinemaApiInfrastructure.Seeders
 
             List<string> ImageUrls = new List<string>()
             {
-                "https://static.wikia.nocookie.net/filmopedia/images/3/39/Shrek.jpg/revision/latest?cb=20131115200702&path-prefix=pl",
+                "https://i.ebayimg.com/images/g/eqkAAOSwY3tbOvT5/s-l400.jpg",
                 "https://www.bilety24.pl/media/cache/repertoire_medium/https---www.bilety24.pl/public/users/235/o/8gadeeb4f9e64didixxwjdmuwfq.jpg",
                 "https://fwcdn.pl/fpo/59/73/125973/7535965_2.3.jpg",
                 "https://i.ebayimg.com/images/g/1yQAAOSwv8Zdbmwv/s-l1200.jpg",
