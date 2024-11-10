@@ -17,7 +17,6 @@ const isTomorrow = (dateNow: Date, incomingDate: Date): boolean => {
 }
 
 const convertToDatePickerValue = (date: Date): DatePickerDateValue => {
-    debugger;
     const dateNow = new Date();
     let result: DatePickerDateValue = {shortDay: '', shortMonth: ''};
 
@@ -27,6 +26,9 @@ const convertToDatePickerValue = (date: Date): DatePickerDateValue => {
         result.shortDay = 'Jutro';
     } else {
         switch(date.getDay()) {
+            case 0:
+                result.shortDay = 'Ndz.'
+                break;
             case 1:
                 result.shortDay = 'Pon.'
                 break;
@@ -44,9 +46,6 @@ const convertToDatePickerValue = (date: Date): DatePickerDateValue => {
                 break;
             case 6:
                 result.shortDay = 'Sob.'
-                break;
-            case 7:
-                result.shortDay = 'Ndz.'
                 break;
             default:
                 break;
