@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-cMainBg p-4 fixed top-0 left-0 w-full z-10 shadow-lg">
+    <nav className="bg-cMainBg p-4 top-0 fixed left-0 w-full z-10 shadow-lg">
       <div className="mx-auto flex items-center px-5 space-x-8">
         {/* Ikonka kina */}
         <NavLink to="/movies" className="text-cMainText text-2xl font-bold">

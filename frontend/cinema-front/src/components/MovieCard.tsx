@@ -9,7 +9,7 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
     return (
-      <div className="bg-cMainBg p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:bg-cMainBhHover cursor-pointer"
+      <div className="bg-cMainBg p-6 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 hover:bg-cMainBgHover cursor-pointer"
         onClick={(e) => console.log(e.target)}>
         <img 
           src={movie.imageUrl} 
