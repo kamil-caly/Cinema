@@ -5,5 +5,5 @@
 5) Pobieranie zarezerwowanych miejsc w sali w ramach wybranego seansu. ✔
 6) SetUp projektu frontend wraz z tailwind css. ✔
 7) 'MoviePage' z wyświetlaniem wszystkich filmów. ✔
-8) Komponent 'DatePicker'.
+8) Komponent 'DatePicker'. ✔
 8) 'SeancePage' z wyświetlaniem seansów dla danego dnia + filtrowanie po nazwie filmu (searchBox).

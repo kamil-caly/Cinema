@@ -14,9 +14,10 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
     const [selectedDayInYear, setSelectedDayInYear] = useState<number>(moment(firstDisplayDate).dayOfYear());
 
     const moveDates = (dir: 'left' | 'right') => {
-        if (dir == 'left') {
+        if (dir == 'left' && !moment(firstDisplayDate).isSame(new Date(), 'day')) {
             setFirstDisplayDate(moment(firstDisplayDate).subtract(7, 'days').toDate());
-        } else {
+        }
+        if (dir == 'right' && moment(firstDisplayDate).isBefore(moment(new Date()).add(6, 'month'), 'day')) {
             setFirstDisplayDate(moment(firstDisplayDate).add(7, 'days').toDate());
         }
     }
@@ -30,10 +31,13 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
     }
 
     return (
-        <div className='flex flex-col dark:bg-gray-700 border border-gray-600 rounded-lg w-fit p-4'>
+        <div className='flex flex-col dark:bg-gray-700 border border-gray-600 rounded-lg w-fit h-fit p-4'>
             <div className='text-white mb-4 text-lg font-medium'>Wybierz interesujący Cię dzień</div>
             <div className='flex'>
-                {!moment(firstDisplayDate).isSame(new Date(), 'day') && <img onClick={() => moveDates('left')} className='me-4 w-8 h-8 bg-white rounded-full self-center cursor-pointer opacity-85 hover:opacity-100' src={arrowBackIcon} alt="Back Arrow" />}
+                <img onClick={() => moveDates('left')}
+                    className={`me-4 w-8 h-8 bg-white rounded-full self-center 
+                    ${moment(firstDisplayDate).isSame(new Date(), 'day') ? 'cursor-auto opacity-20' : ' cursor-pointer opacity-85 hover:opacity-100'}`}
+                    src={arrowBackIcon} alt="Back Arrow" />
                 {Array.from({ length: 7 }).map((_, i) => {
                     const date = moment(firstDisplayDate).add(i, 'days');
                     const isActive = selectedDayInYear === moment(firstDisplayDate).add(i, 'days').dayOfYear();
@@ -50,7 +54,10 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
                         </button>
                     );
                 })}
-                {moment(firstDisplayDate).isBefore(moment(new Date()).add(6, 'month'), 'day') && <img onClick={() => moveDates('right')} className='w-8 h-8 bg-white rounded-full self-center cursor-pointer opacity-85 hover:opacity-100' src={arrowNextIcon} alt="Next Arrow" />}
+                <img onClick={() => moveDates('right')}
+                    className={`me-4 w-8 h-8 bg-white rounded-full self-center 
+                    ${!moment(firstDisplayDate).isBefore(moment(new Date()).add(6, 'month'), 'day') ? 'cursor-auto opacity-20' : ' cursor-pointer opacity-85 hover:opacity-100'}`}
+                    src={arrowNextIcon} alt="Next Arrow" />
             </div>
         </div>
     );
