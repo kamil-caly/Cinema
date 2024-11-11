@@ -31,7 +31,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
     }
 
     return (
-        <div className='flex flex-col dark:bg-gray-700 border border-gray-600 rounded-lg w-fit h-fit p-4'>
+        <div className='flex flex-col bg-gray-700 border border-gray-600 rounded-lg w-fit h-fit p-4'>
             <div className='text-white mb-4 text-lg font-medium'>Wybierz interesujący Cię dzień</div>
             <div className='flex'>
                 <img onClick={() => moveDates('left')}
