@@ -5,12 +5,16 @@ import { Get } from '../../services/BaseApi';
 import moment from 'moment';
 import { SeanceDto, SeanceDtoFlat } from '../../types/Seance';
 import SeanceCard from '../../components/SeanceCard';
+import { useLocation } from 'react-router-dom';
 
 const SeancesPage: React.FC = () => {
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const paramsMovieTitle = params.get('title');
     const API_URL = config.API_URL;
     const [seances, setSeances] = useState<SeanceDtoFlat[]>([]);
     const [currentDate, setCurrentDate] = useState<Date>(new Date());
-    const [searchTxt, setSearchTxt] = useState<string>('');
+    const [searchTxt, setSearchTxt] = useState<string>(paramsMovieTitle ?? '');
 
     useEffect(() => {
         const fetchSeances = async () => {

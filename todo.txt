@@ -7,4 +7,4 @@
 7) 'MoviePage' z wyświetlaniem wszystkich filmów. ✔
 8) Komponent 'DatePicker'. ✔
 9) 'SeancePage' z wyświetlaniem seansów dla danego dnia + filtrowanie po nazwie filmu (searchBox). ✔
-10) Przechodzenie z MoviePage na SeancePage z tytułem filmu dla searchBox, dzień domyślnie ustawiany na 'dziś'.
+10) Przechodzenie z MoviePage na SeancePage z tytułem filmu dla searchBox, dzień domyślnie ustawiany na 'dziś'. ✔
