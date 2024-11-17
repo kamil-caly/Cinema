@@ -4,6 +4,7 @@ using CinemaApiInfrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinemaApiInfrastructure.Migrations
 {
     [DbContext(typeof(CinemaApiDbContext))]
-    partial class CinemaApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241117192548_add_users_and_roles")]
+    partial class add_users_and_roles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

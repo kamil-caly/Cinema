@@ -12,6 +12,9 @@ namespace CinemaApiInfrastructure.Persistence
         public DbSet<Hall> Halls { get; set; } = default!;
         public DbSet<Ticket> Tickets { get; set; } = default!;
         public DbSet<Seat> Seats { get; set; } = default!;
+        public DbSet<User> Users { get; set; } = default!;
+        public DbSet<Role> Roles { get; set; } = default!;
+        public DbSet<UserRole> UserRoles { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +39,19 @@ namespace CinemaApiInfrastructure.Persistence
                 .HasMany(t => t.Seats)
                 .WithOne(s => s.Ticket)
                 .HasForeignKey(s => s.TicketId);
+
+            modelBuilder.Entity<UserRole>()
+                .HasKey(ur => new { ur.UserId, ur.RoleId });
+
+            modelBuilder.Entity<UserRole>()
+               .HasOne(ur => ur.User)
+               .WithMany(u => u.UserRoles)
+               .HasForeignKey(ur => ur.UserId);
+
+            modelBuilder.Entity<UserRole>()
+               .HasOne(ur => ur.Role)
+               .WithMany(r => r.UserRoles)
+               .HasForeignKey(ur => ur.RoleId);
         }
     }
 }
