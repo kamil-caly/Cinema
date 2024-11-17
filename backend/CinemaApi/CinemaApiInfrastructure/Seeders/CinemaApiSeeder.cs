@@ -19,15 +19,20 @@ namespace CinemaApiInfrastructure.Seeders
         {
             if (await _dbContext.Database.CanConnectAsync())
             {
-                if (_dbContext.Movies.Any())
+                if (!_dbContext.Movies.Any())
                 {
-                    return;  
+                    var (movies, halls) = GetDbData();
+                    await _dbContext.Movies.AddRangeAsync(movies);
+                    await _dbContext.Halls.AddRangeAsync(halls);
+                    await _dbContext.SaveChangesAsync();
                 }
 
-                var (movies, halls) = GetDbData();
-                await _dbContext.Movies.AddRangeAsync(movies);
-                await _dbContext.Halls.AddRangeAsync(halls);
-                await _dbContext.SaveChangesAsync();
+                if (!_dbContext.Roles.Any())
+                {
+                    var roles = GetRoles();
+                    await _dbContext.Roles.AddRangeAsync(roles);
+                    await _dbContext.SaveChangesAsync();
+                }
             }
         }
 
@@ -191,6 +196,16 @@ namespace CinemaApiInfrastructure.Seeders
             }
 
             return seances;
+        }
+
+        private List<Role> GetRoles()
+        {
+            return new List<Role>
+            {
+                new Role { Name = "Admin"},
+                new Role { Name = "Ticketer"},
+                new Role { Name = "Viewer"},
+            };
         }
     }
 }

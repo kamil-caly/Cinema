@@ -8,4 +8,5 @@
 8) Komponent 'DatePicker'. ✔
 9) 'SeancePage' z wyświetlaniem seansów dla danego dnia + filtrowanie po nazwie filmu (searchBox). ✔
 10) Przechodzenie z MoviePage na SeancePage z tytułem filmu dla searchBox, dzień domyślnie ustawiany na 'dziś'. ✔
-11) Dodanie użytkowników: widz, bileter, administrator -> microsoft identity.
+11) Utworzenie nowych tabel: User, Role, UserRole + dodanie ról: Bileter, Widz, Administrator.
+12) Endpoint do rejestracji z tokenem jwt.
