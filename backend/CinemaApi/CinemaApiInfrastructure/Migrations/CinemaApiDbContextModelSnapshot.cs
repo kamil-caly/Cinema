@@ -39,7 +39,7 @@ namespace CinemaApiInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Halls");
+                    b.ToTable("Halls", (string)null);
                 });
 
             modelBuilder.Entity("CinemaApiDomain.Entities.Movie", b =>
@@ -67,7 +67,7 @@ namespace CinemaApiInfrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movies", (string)null);
                 });
 
             modelBuilder.Entity("CinemaApiDomain.Entities.Seance", b =>
@@ -93,7 +93,7 @@ namespace CinemaApiInfrastructure.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Seances");
+                    b.ToTable("Seances", (string)null);
                 });
 
             modelBuilder.Entity("CinemaApiDomain.Entities.Seat", b =>
@@ -120,7 +120,7 @@ namespace CinemaApiInfrastructure.Migrations
 
                     b.HasIndex("TicketId");
 
-                    b.ToTable("Seats");
+                    b.ToTable("Seats", (string)null);
                 });
 
             modelBuilder.Entity("CinemaApiDomain.Entities.Ticket", b =>
@@ -152,7 +152,7 @@ namespace CinemaApiInfrastructure.Migrations
 
                     b.HasIndex("SeanceId");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Tickets", (string)null);
                 });
 
             modelBuilder.Entity("CinemaApiDomain.Entities.Seance", b =>

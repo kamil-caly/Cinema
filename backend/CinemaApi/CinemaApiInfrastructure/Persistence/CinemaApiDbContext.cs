@@ -7,11 +7,11 @@ namespace CinemaApiInfrastructure.Persistence
     {
         public CinemaApiDbContext(DbContextOptions<CinemaApiDbContext> options) : base(options) { }
 
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<Seance> Seances { get; set; }
-        public DbSet<Hall> Halls { get; set; }
-        public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<Seat> Seats { get; set; }
+        public DbSet<Movie> Movies { get; set; } = default!;
+        public DbSet<Seance> Seances { get; set; } = default!;
+        public DbSet<Hall> Halls { get; set; } = default!;
+        public DbSet<Ticket> Tickets { get; set; } = default!;
+        public DbSet<Seat> Seats { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
