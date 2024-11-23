@@ -21,6 +21,7 @@ namespace CinemaApiInfrastructure.Extensions
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ISeanceRepository, SeanceRepository>();
             services.AddScoped<ISeatRepository, SeatRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

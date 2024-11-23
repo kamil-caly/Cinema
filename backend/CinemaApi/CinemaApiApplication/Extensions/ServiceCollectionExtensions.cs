@@ -1,5 +1,8 @@
-﻿using FluentValidation;
+﻿using CinemaApiApplication.Account.Commands.RegisterUser;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Builder;
 
 namespace CinemaApiApplication.Extensions
 {
@@ -13,6 +16,11 @@ namespace CinemaApiApplication.Extensions
                 configuration.RegisterServicesFromAssembly(assembly));
 
             services.AddValidatorsFromAssembly(assembly);
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             return services;
         }
