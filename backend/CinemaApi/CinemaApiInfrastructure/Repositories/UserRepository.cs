@@ -22,7 +22,11 @@ namespace CinemaApiInfrastructure.Repositories
 
         public async Task<User?> GetByEmailAsync(string email)
         {
-            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            return await _dbContext
+                .Users
+                .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync(u => u.Email == email);
         }
     }
 }

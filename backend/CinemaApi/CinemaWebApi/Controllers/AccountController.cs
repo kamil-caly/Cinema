@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using CinemaApiApplication.Account.Commands.RegisterUser;
 using FluentValidation;
+using CinemaApiApplication.Account.Commands.LoginUser;
 
 namespace CinemaWebApi.Controllers
 {
@@ -33,6 +34,20 @@ namespace CinemaWebApi.Controllers
             await _mediator.Send(command);
 
             return Results.Ok("User registered successfully.");
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<string>> Login([FromBody] LoginUserCommand command)
+        {
+            try
+            {
+                string token = await _mediator.Send(command);
+                return Ok(token);
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(ex.Message);
+            }
         }
     }
 }

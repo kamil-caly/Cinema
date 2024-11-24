@@ -2,15 +2,11 @@ using CinemaApiInfrastructure.Extensions;
 using CinemaApiApplication.Extensions;
 using CinemaApiInfrastructure.Seeders;
 using Microsoft.AspNetCore.Mvc;
+using CinemaWebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
+builder.AddPresentation();
 builder.Services
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
