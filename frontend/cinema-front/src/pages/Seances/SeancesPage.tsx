@@ -62,12 +62,11 @@ const SeancesPage: React.FC = () => {
     }
 
     return (
-        <div className="flex flex-col items-center min-h-screen bg-gradient-radial from-cinemaBg via-purple-950 to-violet-950 text-white p-8 pt-24">
+        <div className="flex flex-col items-center min-h-screen bg-cinemaBgPrimary text-cinemaTextPrimary p-8 pt-pageTopPadding">
             <div className="mb-6">
                 <div className="mb-6">
-                    <label htmlFor="large-input" className="block mb-2 text-lg font-medium ps-2">Szukaj</label>
                     <div className='flex'>
-                        <input type="text" id="large-input" value={searchTxt} onChange={t => setSearchTxt(t.target.value)} className="min-w-96 h-10 block p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" />
+                        <input type="text" id="large-input" placeholder='🔍 Search' value={searchTxt} onChange={t => setSearchTxt(t.target.value)} className="min-w-96 h-10 block p-4 bg-cinemaBgSecondary border border-none rounded-full" />
                         <button onClick={() => setSearchTxt('')} className='ms-4 text-2xl font-bold hover: text-red-700 hover:text-red-500'>
                             &#x2715;
                         </button>
@@ -75,7 +74,7 @@ const SeancesPage: React.FC = () => {
                 </div>
                 <DatePicker onDateChange={dateChange} />
                 {seances.length > 0
-                    ? <div className="mt-6 text-white bg-gray-700 border border-gray-600 rounded-lg transition-all duration-300 transform w-fit"
+                    ? <div className="mt-6 text-cinemaTextPrimary bg-cinemaBgSecondary rounded-lg transition-all duration-300 transform w-fit"
                         onClick={(e) => console.log(e.target)}>
                         {seances.map(seance => (
                             <SeanceCard key={seance.movieTitle} seance={seance} />

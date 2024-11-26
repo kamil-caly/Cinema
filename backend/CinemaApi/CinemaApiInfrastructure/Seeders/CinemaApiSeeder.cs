@@ -114,7 +114,7 @@ namespace CinemaApiInfrastructure.Seeders
             List<string> ImageUrls = new List<string>()
             {
                 "https://i.ebayimg.com/images/g/eqkAAOSwY3tbOvT5/s-l400.jpg",
-                "https://www.bilety24.pl/media/cache/repertoire_medium/https---www.bilety24.pl/public/users/235/o/8gadeeb4f9e64didixxwjdmuwfq.jpg",
+                "https://image.bilety24.pl/original/dealer-default/235/8gadeeb4f9e64didixxwjdmuwfq.jpg",
                 "https://fwcdn.pl/fpo/59/73/125973/7535965_2.3.jpg",
                 "https://i.ebayimg.com/images/g/1yQAAOSwv8Zdbmwv/s-l1200.jpg",
                 "https://m.media-amazon.com/images/I/91N1lG+LBIS._AC_UF1000,1000_QL80_.jpg",

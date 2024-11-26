@@ -27,7 +27,7 @@ const MoviesPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-cinemaBg text-white min-h-screen p-8 pt-24">
+    <div className="bg-cinemaBgPrimary text-cinemaTextPrimary min-h-screen p-8 pt-pageTopPadding">
       <div className="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4">
         {movies.map((movie) => (
           <MovieCard key={movie.title} movie={movie} />

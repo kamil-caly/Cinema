@@ -31,11 +31,11 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
     }
 
     return (
-        <div className='flex flex-col bg-gray-700 border border-gray-600 rounded-lg w-fit h-fit p-4'>
-            <div className='text-white mb-4 text-lg font-medium'>Wybierz interesujący Cię dzień</div>
+        <div className='flex flex-col bg-cinemaBgViolet rounded-lg w-fit h-fit p-4'>
+            <div className='text-cinemaTextViolet mb-4 text-lg font-medium'>Wybierz interesujący Cię dzień</div>
             <div className='flex'>
                 <img onClick={() => moveDates('left')}
-                    className={`me-4 w-8 h-8 bg-white rounded-full self-center 
+                    className={`me-4 w-8 h-8 bg-cinemaTextPrimary rounded-full self-center 
                     ${moment(firstDisplayDate).isSame(new Date(), 'day') ? 'cursor-auto opacity-20' : ' cursor-pointer opacity-85 hover:opacity-100'}`}
                     src={arrowBackIcon} alt="Back Arrow" />
                 {Array.from({ length: 7 }).map((_, i) => {
@@ -45,8 +45,8 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
                         <button
                             key={date.dayOfYear()}
                             onClick={() => handleDateSelection(date)}
-                            className={`me-4 min-w-20 h-20 bg-violet-800 border border-white hover:bg-white hover:text-black rounded-lg transition-all duration-600
-                        ${isActive ? 'bg-white text-black' : ''}`}>
+                            className={`me-4 min-w-20 h-20 rounded-lg transition-all duration-600
+                                ${isActive ? 'text-cinemaBtnViolet bg-cinemaTextPrimary' : 'bg-cinemaBtnViolet text-cinemaTextPrimary hover:bg-cinemaTextPrimary hover:text-cinemaBtnViolet'}`}>
                             <div className='flex flex-col'>
                                 <span className='font-bold'>{convertToDatePickerValue(moment(firstDisplayDate).add(i, 'days').toDate()).shortDay}</span>
                                 <span>{convertToDatePickerValue(moment(firstDisplayDate).add(i, 'days').toDate()).shortMonth}</span>
@@ -55,7 +55,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ onDateChange }) => {
                     );
                 })}
                 <img onClick={() => moveDates('right')}
-                    className={`me-4 w-8 h-8 bg-white rounded-full self-center 
+                    className={`me-4 w-8 h-8 bg-cinemaTextPrimary rounded-full self-center 
                     ${!moment(firstDisplayDate).isBefore(moment(new Date()).add(6, 'month'), 'day') ? 'cursor-auto opacity-20' : ' cursor-pointer opacity-85 hover:opacity-100'}`}
                     src={arrowNextIcon} alt="Next Arrow" />
             </div>
