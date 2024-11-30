@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Background */
+.Toastify__toast-theme--dark.Toastify__toast--success {
+    @apply bg-cinemaBgGreen text-cinemaTextPrimary;
+}
+
+.Toastify__toast-theme--dark.Toastify__toast--error {
+    @apply bg-cinemaBgRed text-cinemaTextPrimary;
+}
+
+.Toastify__toast-theme--dark.Toastify__toast--info {
+    @apply bg-cinemaBgViolet text-cinemaTextPrimary;
+}
+
+
+/* ProgressBars */
+.Toastify__progress-bar-theme--dark--success.Toastify__progress-bar--success {
+    @apply bg-cinemaTextGreen;
+}
+
+.Toastify__progress-bar-theme--dark.Toastify__progress-bar--error {
+    @apply bg-cinemaTextRed;
+}
+
+.Toastify__progress-bar-theme--dark.Toastify__progress-bar--info {
+    @apply bg-cinemaTextViolet;
+}
+
+
+/* Icons */
+.Toastify__toast-theme--dark.Toastify__toast--success > div div svg {
+    @apply fill-cinemaTextGreen;
+}
+
+.Toastify__toast-theme--dark.Toastify__toast--error > div div svg {
+    @apply fill-cinemaTextRed;
+}
+
+.Toastify__toast-theme--dark.Toastify__toast--info > div div svg {
+    @apply fill-cinemaTextViolet;
+}

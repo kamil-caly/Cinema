@@ -40,7 +40,11 @@ module.exports = {
 				cinemaBorderSecondary: '#30333a',
 
 				// Colors
-				cinemaBlack: '#000000'
+				cinemaBlack: '#000000',
+
+				// WebPage ScrollBar
+				cinemaBgScrollBar: '#424242',
+				cinemaScrollBar: '#686868',
 			},
 			height: {
 				'navbar': '72px',

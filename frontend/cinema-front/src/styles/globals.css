@@ -2,7 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dodatkowe style globalne */
-.container {
-  @apply max-w-7xl mx-auto px-4;
-}
+/* import styles  */
+@import './toastify-override.css';

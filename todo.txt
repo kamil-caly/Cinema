@@ -9,4 +9,7 @@
 9) 'SeancePage' z wyświetlaniem seansów dla danego dnia + filtrowanie po nazwie filmu (searchBox). ✔
 10) Przechodzenie z MoviePage na SeancePage z tytułem filmu dla searchBox, dzień domyślnie ustawiany na 'dziś'. ✔
 11) Utworzenie nowych tabel: User, Role, UserRole + dodanie ról: Bileter, Widz, Administrator. ✔
-12) Endpoint do rejestracji z tokenem jwt.
+12) Endpoint do rejestracji. ✔
+13) Formatka do rejestracji użytkowników, po zarejestrowaniu przenosi na formatkę do logowania. ✔
+14) Dodanie i stylizacja react-toastify. ✔
+15) Dodanie obsługi logowania wraz z przekazywaniem tokena autoryzacji na front.
