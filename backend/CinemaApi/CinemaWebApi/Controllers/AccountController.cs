@@ -5,6 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using CinemaApiApplication.Account.Commands.RegisterUser;
 using FluentValidation;
 using CinemaApiApplication.Account.Commands.LoginUser;
+using CinemaApiApplication.Account;
+using Microsoft.AspNetCore.Authorization;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using CinemaApiApplication.Seance.Queries;
+using System;
+using CinemaApiApplication.Account.Queries.GetUserData;
 
 namespace CinemaWebApi.Controllers
 {
@@ -47,6 +53,21 @@ namespace CinemaWebApi.Controllers
             catch (Exception ex)
             {
                 return Unauthorized(ex.Message);
+            }
+        }
+
+        [Authorize]
+        [HttpGet("getUserData")]
+        public async Task<ActionResult<UserDataDto>> GetUserData([FromQuery] string token)
+        {
+            try
+            {
+                UserDataDto userData = await _mediator.Send(new GetUserDataQuery(token));
+                return Ok(userData);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(401, new { message = "An error occurred while processing your request.", error = ex.Message });
             }
         }
     }

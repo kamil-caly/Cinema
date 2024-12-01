@@ -15,6 +15,9 @@ interface RequestOptions {
    */
   export const Get = async <T = any>(baseUrl: string, endpoint: string, options: RequestOptions = {}): Promise<T> => {
     try {
+			const token: string = localStorage.getItem('token') ?? '';
+			const parsedToken: string = token ? JSON.parse(token) : '';
+
       // Budowanie pełnego URL-a z parametrami zapytania, jeśli istnieją
       const url = new URL(`${baseUrl}${endpoint}`);
       if (options.params) {
@@ -27,6 +30,7 @@ interface RequestOptions {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+					'Authorization': `Bearer ${parsedToken}`,
           ...options.headers,
         },
       });
@@ -88,8 +92,13 @@ export const Post = async <T = any>(
 		};
 	  }
   
-	  const data = await response.json();
-	  return data;
+	  const contentType = response.headers.get('Content-Type') || '';
+
+	  if (contentType.includes('application/json')) {
+		return await response.json();
+	  } else {
+		return (await response.text()) as unknown as T;
+	  }
 	} catch (error) {
 	  console.error('Error posting data:', error);
 	  throw error;

@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Account\Queries\" />
     <Folder Include="Movie\Commands\" />
     <Folder Include="Seance\Commands\" />
     <Folder Include="Seat\Commands\" />
