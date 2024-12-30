@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import config from '../../app_config.json';
-import FormField from '../../components/FormField';
-import { Post } from '../../services/BaseApi';
-import { RegisterUserDto } from '../../types/RegisterUserDto';
+import config from '../../../app_config.json';
+import FormField from '../../../components/FormField';
+import { Post } from '../../../services/BaseApi';
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router";
+import { RegisterUserDto } from './RegisterPageTypes';
 
 interface CreateAccountErrors {
     firstNameError?: string;

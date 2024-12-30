@@ -4,12 +4,12 @@ import Navbar from './components/Navbar';
 import MoviesPage from './pages/Movies/MoviesPage';
 import SeancesPage from './pages/Seances/SeancesPage';
 import TestPage from './pages/TestPage';
-import RegisterPage from './pages/Account/RegisterPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/globals.css';
-import LoginPage from './pages/Account/LoginPage';
 import { AuthProvider } from './contexts/AuthContext';
+import RegisterPage from './pages/Account/Register/RegisterPage';
+import LoginPage from './pages/Account/Login/LoginPage';
 
 
 const App: React.FC = () => {

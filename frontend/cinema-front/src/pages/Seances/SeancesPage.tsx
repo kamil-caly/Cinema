@@ -3,9 +3,9 @@ import DatePicker from '../../components/DatePicker';
 import config from '../../app_config.json';
 import { Get } from '../../services/BaseApi';
 import moment from 'moment';
-import { SeanceDto, SeanceDtoFlat } from '../../types/Seance';
 import SeanceCard from '../../components/SeanceCard';
 import { useLocation } from 'react-router-dom';
+import { SeanceDto, SeanceDtoFlat } from './SeancesPageTypes';
 
 const SeancesPage: React.FC = () => {
     const location = useLocation();

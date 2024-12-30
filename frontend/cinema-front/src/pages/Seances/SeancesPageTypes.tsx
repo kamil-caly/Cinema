@@ -1,5 +1,5 @@
 
-export interface SeanceDto {
+export type SeanceDto = {
     seanceDate: Date,
     movieTitle?: string,
     movieDescription?: number,
@@ -9,7 +9,7 @@ export interface SeanceDto {
     hallCapacity?: number
 }
 
-export interface SeanceDtoFlat {
+export type SeanceDtoFlat = {
     seanceDates: Date[],
     movieTitle?: string,
     movieDescription?: number,

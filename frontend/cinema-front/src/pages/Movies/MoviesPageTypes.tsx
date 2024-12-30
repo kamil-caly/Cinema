@@ -1,4 +1,4 @@
-export interface MovieDto {
+export type MovieDto = {
     title: string,
     description: string,
     durationInMin: number,

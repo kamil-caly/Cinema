@@ -7,7 +7,6 @@ using FluentValidation;
 using CinemaApiApplication.Account.Commands.LoginUser;
 using CinemaApiApplication.Account;
 using Microsoft.AspNetCore.Authorization;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using CinemaApiApplication.Seance.Queries;
 using System;
 using CinemaApiApplication.Account.Queries.GetUserData;

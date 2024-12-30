@@ -1,8 +1,8 @@
 // src/components/MovieCard.tsx
 
 import React from 'react';
-import { MovieDto } from '../types/Movie';
 import { useNavigate } from 'react-router-dom';
+import { MovieDto } from '../pages/Movies/MoviesPageTypes';
 
 interface MovieCardProps {
     movie: MovieDto;

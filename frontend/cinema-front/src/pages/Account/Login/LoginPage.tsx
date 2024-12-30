@@ -1,11 +1,12 @@
-import FormField from "../../components/FormField";
-import config from '../../app_config.json';
+import FormField from "../../../components/FormField";
+import config from '../../../app_config.json';
 import { useEffect, useState } from "react";
-import { LoginUserDto } from "../../types/LoginUserDto";
-import { Post } from "../../services/BaseApi";
+import { Post } from "../../../services/BaseApi";
 import { toast } from "react-toastify";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { useAuthContext } from "../../contexts/AuthContext";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import { useAuthContext } from "../../../contexts/AuthContext";
+import { LoginUserDto } from "./LoginPageTypes";
+import { useNavigate } from "react-router-dom";
 
 interface SignInAccountErrors {
     emailError?: string;
@@ -18,11 +19,8 @@ const RegisterPage: React.FC = () => {
     const [password, setPassword] = useState<string>('');
     const [errors, setErrors] = useState<SignInAccountErrors>();
     const [_, setLSValue] = useLocalStorage();
-    const authContext = useAuthContext();
-
-    useEffect(() => {
-        console.log('authContext: ', authContext);
-    }, [authContext])
+    const { state, dispatch } = useAuthContext();
+    const navigate = useNavigate();
 
     const logInClick = async () => {
         let errors: SignInAccountErrors = {};
@@ -52,6 +50,8 @@ const RegisterPage: React.FC = () => {
             toast.success('Login success');
             console.log('result: ', result);
             setLSValue('token', result.toString());
+            dispatch({ type: 'LOGIN' });
+            navigate('/movies')
         } catch (error: any) {
             console.log('Error during login:', error);
             if (error.status) {

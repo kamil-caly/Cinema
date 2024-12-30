@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Get } from '../../services/BaseApi';
 import config from '../../app_config.json';
 import MovieCard from '../../components/MovieCard';
-import { MovieDto } from '../../types/Movie';
+import { MovieDto } from './MoviesPageTypes';
 
 
 const MoviesPage: React.FC = () => {

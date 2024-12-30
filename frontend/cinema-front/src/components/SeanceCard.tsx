@@ -1,5 +1,5 @@
 import moment from "moment";
-import { SeanceDtoFlat } from "../types/Seance";
+import { SeanceDtoFlat } from "../pages/Seances/SeancesPageTypes";
 
 interface SeanceCardProps {
     seance: SeanceDtoFlat;

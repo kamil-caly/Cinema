@@ -14,4 +14,4 @@
 14) Dodanie i stylizacja react-toastify. ✔
 15) Dodanie obsługi logowania wraz z przekazywaniem tokena autoryzacji na front. ✔
 16) Po poprawnym zalogowaniu NavLink'i do logowania i rejestracji powinny zniknąć, a w ich miejsce imie i nazwisko zalogowanego użytkownika
-wraz z przyciskiem wyloguj.
+wraz z przyciskiem wyloguj. ✔
