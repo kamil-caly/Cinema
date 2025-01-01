@@ -10,6 +10,7 @@ import './styles/globals.css';
 import { AuthProvider } from './contexts/AuthContext';
 import RegisterPage from './pages/Account/Register/RegisterPage';
 import LoginPage from './pages/Account/Login/LoginPage';
+import SeatsPage from './pages/Seats/SeatsPage';
 
 
 const App: React.FC = () => {
@@ -22,6 +23,7 @@ const App: React.FC = () => {
                         <Route path='/' element={<MoviesPage />} />
                         <Route path="/movies" element={<MoviesPage />} />
                         <Route path="/seances" element={<SeancesPage />} />
+                        <Route path="/seats/:seanceDate" element={<SeatsPage />} />
                         <Route path="/register" element={<RegisterPage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/test" element={<TestPage />} />

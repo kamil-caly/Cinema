@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import arrowBackIcon from '../assets/arrow_back.svg';
 import arrowNextIcon from '../assets/arrow_next.svg';
-import convertToDatePickerValue from '../utils/DateConverter';
 import moment from 'moment';
+import { convertToDatePickerValue } from '../utils/DateConverter';
 
 
 interface DatePickerProps {

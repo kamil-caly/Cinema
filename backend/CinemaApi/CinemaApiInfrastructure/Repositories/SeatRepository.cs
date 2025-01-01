@@ -14,21 +14,14 @@ namespace CinemaApiInfrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Seat>?> GetAllForGivenSeance(DateTime seanceDateTime)
+        public async Task<IEnumerable<Seat>> GetSeatsForGivenSeanceDate(DateTime seanceDate)
         {
-            //return await _dbContext.Seances
-            //    .Where(s => s.Date == seanceDateTime)
-            //    .SelectMany(s => s.Tickets.SelectMany(t => t.Seats))
-            //    .ToListAsync();
+            var seance = await _dbContext.Seances
+                .Include(s => s.Tickets)
+                .ThenInclude(t => t.Seats)
+                .FirstOrDefaultAsync(s => s.Date == seanceDate);
 
-            // inna składnia zapytania
-            return await(
-                  from s in _dbContext.Seances
-                  where s.Date == seanceDateTime
-                  from t in s.Tickets
-                  from seat in t.Seats
-                  select seat
-              ).ToListAsync();
+            return seance?.Tickets.SelectMany(t => t.Seats) ?? [];
         }
     }
 }

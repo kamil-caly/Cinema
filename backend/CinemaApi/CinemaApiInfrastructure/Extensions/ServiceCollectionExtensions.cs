@@ -23,8 +23,11 @@ namespace CinemaApiInfrastructure.Extensions
             services.AddScoped<CinemaApiSeeder>();
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<ISeanceRepository, SeanceRepository>();
+            services.AddScoped<IHallRepository, HallRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddHttpContextAccessor();
 
             if (configuration["Jwt:Issuer"] == null || 
                 configuration["Jwt:Audience"] == null || 

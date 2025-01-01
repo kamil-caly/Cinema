@@ -4,6 +4,6 @@ namespace CinemaApiDomain.Interfaces
 {
     public interface ISeatRepository
     {
-        Task<IEnumerable<Seat>?> GetAllForGivenSeance(DateTime seanceDateTime);
+        Task<IEnumerable<Seat>> GetSeatsForGivenSeanceDate(DateTime seanceDate);
     }
 }

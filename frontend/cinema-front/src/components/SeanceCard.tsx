@@ -1,11 +1,13 @@
 import moment from "moment";
 import { SeanceDtoFlat } from "../pages/Seances/SeancesPageTypes";
+import { useNavigate } from "react-router-dom";
 
 interface SeanceCardProps {
     seance: SeanceDtoFlat;
 }
 
 const SeanceCard: React.FC<SeanceCardProps> = ({ seance }) => {
+    const navigate = useNavigate();
 
     return (
         <div className='flex flex-row p-4'>
@@ -21,8 +23,13 @@ const SeanceCard: React.FC<SeanceCardProps> = ({ seance }) => {
                 </div>
                 <div className='flex h-full items-center ms-4'>
                     {seance.seanceDates.map((d, i) => (
-                        <button className={`bg-cinemaTextOrange text-cinemaBlack hover:bg-cinemaBlack hover:text-cinemaTextOrange min-w-28 p-4 rounded-2xl transition-all duration-600 font-medium text-lg
-                            ${i == seance.seanceDates.length - 1 ? '' : 'me-4'}`}>{moment(d).format("HH:mm")}</button>
+                        <button
+                            className={`bg-cinemaTextOrange text-cinemaBlack hover:bg-cinemaBlack hover:text-cinemaTextOrange min-w-28 p-4 rounded-2xl transition-all duration-600 font-medium text-lg
+                            ${i == seance.seanceDates.length - 1 ? '' : 'me-4'}`}
+                            onClick={() => navigate(`/seats/${encodeURIComponent(d.toString())}`)}
+                        >
+                            {moment(d).format("HH:mm")}
+                        </button>
                     ))}
                 </div>
             </div>

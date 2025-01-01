@@ -15,3 +15,6 @@
 15) Dodanie obsługi logowania wraz z przekazywaniem tokena autoryzacji na front. ✔
 16) Po poprawnym zalogowaniu NavLink'i do logowania i rejestracji powinny zniknąć, a w ich miejsce imie i nazwisko zalogowanego użytkownika
 wraz z przyciskiem wyloguj. ✔
+17) Przeglądanie miejsc na wybrany seans (tylko zalogowani użytkownicy). ✔
+18) Rezerwacja wybranych miejsc na sali kinowej. ✔
+19) Przeglądanie zakupionych biletów w nowej zakładce (dostęp dla zalogowanych użytkowników).

@@ -24,5 +24,10 @@ namespace CinemaApiInfrastructure.Repositories
                 .OrderBy(s => s.Date)
                 .ToListAsync();
         }
+
+        public async Task<Seance?> GetSeanceForGivenDate(DateTime dateTime)
+        {
+            return await _dbContext.Seances.FirstOrDefaultAsync(s => s.Date == dateTime);
+        }
     }
 }

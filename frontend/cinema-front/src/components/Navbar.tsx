@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuthContext } from '../contexts/AuthContext';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { toast } from 'react-toastify';
 
 const Navbar: React.FC = () => {
     const { state, dispatch } = useAuthContext();
@@ -11,6 +12,7 @@ const Navbar: React.FC = () => {
     const handleLogOut = () => {
         dispatch({ type: 'LOGOUT' });
         setLsValue('token', '');
+        toast.success('Logout success');
     }
 
     return (

@@ -16,7 +16,7 @@ const isTomorrow = (dateNow: Date, incomingDate: Date): boolean => {
       );
 }
 
-const convertToDatePickerValue = (date: Date): DatePickerDateValue => {
+export const convertToDatePickerValue = (date: Date): DatePickerDateValue => {
     const dateNow = new Date();
     let result: DatePickerDateValue = {shortDay: '', shortMonth: ''};
 
@@ -100,4 +100,13 @@ const convertToDatePickerValue = (date: Date): DatePickerDateValue => {
     return result;
 }
 
-export default convertToDatePickerValue;
+
+export const convertToLocalDate = (date: Date) => {
+    return date.toLocaleString('pl-PL', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+    })
+}

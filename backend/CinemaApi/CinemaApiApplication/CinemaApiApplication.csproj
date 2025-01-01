@@ -19,9 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Hall\Commands\" />
     <Folder Include="Movie\Commands\" />
     <Folder Include="Seance\Commands\" />
     <Folder Include="Seat\Commands\" />
+    <Folder Include="Seat\Queries\" />
+    <Folder Include="Ticket\Queries\" />
   </ItemGroup>
 
 </Project>
