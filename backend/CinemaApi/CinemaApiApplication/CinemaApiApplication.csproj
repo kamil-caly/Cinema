@@ -24,7 +24,6 @@
     <Folder Include="Seance\Commands\" />
     <Folder Include="Seat\Commands\" />
     <Folder Include="Seat\Queries\" />
-    <Folder Include="Ticket\Queries\" />
   </ItemGroup>
 
 </Project>

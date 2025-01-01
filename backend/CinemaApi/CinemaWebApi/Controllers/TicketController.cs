@@ -4,7 +4,10 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using CinemaApiApplication.Ticket;
-using CinemaApiApplication.Ticket.Commands;
+using CinemaApiApplication.Movie.Queries;
+using CinemaApiApplication.Movie;
+using CinemaApiApplication.Ticket.Queries.GetTicketsForGivenUser;
+using CinemaApiApplication.Ticket.Commands.CreateTicketForGivenSeance;
 
 namespace CinemaWebApi.Controllers
 {
@@ -26,6 +29,15 @@ namespace CinemaWebApi.Controllers
             string reservationCode = await _mediator.Send(command);
 
             return Ok(reservationCode);
+        }
+
+        [Authorize]
+        [HttpGet("getTickets")]
+        public async Task<ActionResult<IEnumerable<UserTicketDto>>> GetTickets()
+        {
+            var ticketDtos = await _mediator.Send(new GetTicketsForGivenUserQuery());
+
+            return Ok(ticketDtos);
         }
     }
 }

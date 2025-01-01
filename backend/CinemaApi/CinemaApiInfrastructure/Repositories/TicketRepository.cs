@@ -1,6 +1,7 @@
 ﻿using CinemaApiDomain.Entities;
 using CinemaApiDomain.Interfaces;
 using CinemaApiInfrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace CinemaApiInfrastructure.Repositories
 {
@@ -17,6 +18,18 @@ namespace CinemaApiInfrastructure.Repositories
         {
             await _dbContext.Tickets.AddAsync(ticket);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Ticket>> GetTicketsForUserAsync(string userEmail)
+        {
+            return await _dbContext.Tickets
+                .Where(t => t.UserEmail == userEmail)
+                .Include(t => t.Seance)
+                .ThenInclude(t => t.Movie)
+                .Include(t => t.Seance)
+                .ThenInclude(t => t.Hall)
+                .Include(t => t.Seats)
+                .ToListAsync();
         }
     }
 }

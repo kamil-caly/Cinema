@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 
-namespace CinemaApiApplication.Ticket.Commands
+namespace CinemaApiApplication.Ticket.Commands.CreateTicketForGivenSeance
 {
     public class CreateTicketForGivenSeanceCommandHandler : IRequestHandler<CreateTicketForGivenSeanceCommand, string>
     {

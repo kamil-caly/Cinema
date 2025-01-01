@@ -11,6 +11,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import RegisterPage from './pages/Account/Register/RegisterPage';
 import LoginPage from './pages/Account/Login/LoginPage';
 import SeatsPage from './pages/Seats/SeatsPage';
+import TicketsPage from './pages/Tickets/TicketsPage';
 
 
 const App: React.FC = () => {
@@ -23,6 +24,7 @@ const App: React.FC = () => {
                         <Route path='/' element={<MoviesPage />} />
                         <Route path="/movies" element={<MoviesPage />} />
                         <Route path="/seances" element={<SeancesPage />} />
+                        <Route path="/tickets" element={<TicketsPage />} />
                         <Route path="/seats/:seanceDate" element={<SeatsPage />} />
                         <Route path="/register" element={<RegisterPage />} />
                         <Route path="/login" element={<LoginPage />} />

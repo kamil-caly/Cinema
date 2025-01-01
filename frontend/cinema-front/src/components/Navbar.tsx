@@ -44,6 +44,17 @@ const Navbar: React.FC = () => {
                     >
                         Seances
                     </NavLink>
+
+                    <NavLink
+                        to="/tickets"
+                        className={({ isActive }) =>
+                            `text-xl mt-1 p-2 ms-5 rounded-full hover:bg-cinemaHoverPrimary 
+                            ${isActive ? 'text-cinemaTextSecondary bg-cinemaHoverSecondary' : ''}
+                            ${state.isLogged && state.userDto?.role !== 'Ticketer' ? 'flex' : 'hidden'}`
+                        }
+                    >
+                        Tickets
+                    </NavLink>
                 </div>
                 <div className='flex'>
                     <NavLink

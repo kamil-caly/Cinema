@@ -9,7 +9,7 @@ public class GetAllSeancesWithDetailsForGivenArgsQueryHandler : IRequestHandler<
 
     public GetAllSeancesWithDetailsForGivenArgsQueryHandler(ISeanceRepository seanceRepository)
     {
-        this._seanceRepository = seanceRepository;
+        _seanceRepository = seanceRepository;
     }
     public async Task<IEnumerable<SeanceDto>?> Handle(GetAllSeancesWithDetailsForGivenArgsQuery request, CancellationToken cancellationToken)
     {
