@@ -17,4 +17,5 @@
 wraz z przyciskiem wyloguj. ✔
 17) Przeglądanie miejsc na wybrany seans (tylko zalogowani użytkownicy). ✔
 18) Rezerwacja wybranych miejsc na sali kinowej. ✔
-19) Przeglądanie zakupionych biletów w nowej zakładce (dostęp dla zalogowanych użytkowników).
+19) Rezerwować bilety na seanse filmowe mogą robić wszyscy użytkownicy poza bileterami. ✔
+20) Przeglądanie zakupionych biletów w nowej zakładce (dostęp dla zalogowanych użytkowników).

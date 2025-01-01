@@ -17,7 +17,8 @@ const SeatsPage = () => {
     const [bookedSeats, setBookedSeats] = useState<SeatDto[]>([]);
 
     useEffect(() => {
-        if (!state.isLogged) {
+        if (!state.isLogged || state.userDto?.role === 'Ticketer') {
+            toast.error("Access only for logged users in role: 'Admin' or 'Viewer'");
             navigate('/login');
             return;
         }

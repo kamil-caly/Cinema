@@ -1,6 +1,7 @@
 ﻿using CinemaApiDomain.Entities;
 using CinemaApiInfrastructure.Persistence;
 using CinemaApiDomain.Entities.Enums;
+using MediatR;
 
 namespace CinemaApiInfrastructure.Seeders
 {
@@ -31,6 +32,13 @@ namespace CinemaApiInfrastructure.Seeders
                 {
                     var roles = GetRoles();
                     await _dbContext.Roles.AddRangeAsync(roles);
+                    await _dbContext.SaveChangesAsync();
+                }
+
+                if (!_dbContext.Users.Any())
+                {
+                    var defaultUsers = GetDefaultUsers();
+                    await _dbContext.Users.AddRangeAsync(defaultUsers);
                     await _dbContext.SaveChangesAsync();
                 }
             }
@@ -206,6 +214,45 @@ namespace CinemaApiInfrastructure.Seeders
                 new Role { Name = "Ticketer"},
                 new Role { Name = "Viewer"},
             };
+        }
+
+        private List<User> GetDefaultUsers()
+        {
+            var ticketer = new User
+            {
+                Email = "test@ticketer",
+                FirstName = "Test",
+                LastName = "Ticketer",
+                Nationality = "Poland",
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("ticketer123")
+            };
+
+            var ticketerRole = new UserRole
+            {
+                RoleId = 2,
+                User = ticketer
+            };
+
+            ticketer.UserRoles.Add(ticketerRole);
+
+            var admin = new User
+            {
+                Email = "admin",
+                FirstName = "Admin",
+                LastName = "admin123",
+                Nationality = "Poland",
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("admin")
+            };
+
+            var adminRole = new UserRole
+            {
+                RoleId = 1,
+                User = admin
+            };
+
+            admin.UserRoles.Add(adminRole);
+
+            return [ticketer, admin];
         }
     }
 }
