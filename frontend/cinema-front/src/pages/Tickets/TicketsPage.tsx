@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
 import config from '../../app_config.json';
-import { Get, Put } from "../../services/BaseApi";
+import { FetchError, Get, Put } from "../../services/BaseApi";
 import { UserTicketDto } from "./TicketsPageTypes";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +30,8 @@ const TicketPage = () => {
                 const data = await Get<UserTicketDto[]>(API_URL, '/ticket/getTickets', { params: { userRequest: (state.userDto?.role === 'Viewer').toString() } });
                 setTickets(data);
             } catch (error) {
-                toast.error('Unexpected error occurred');
+                const fetchError = error as FetchError;
+                toast.error('Fetch error occurred: ' + fetchError.body);
             }
         }
     };
@@ -38,16 +39,19 @@ const TicketPage = () => {
     const changeTicketState = async (ticket: UserTicketDto) => {
         if (state.userDto?.role === 'Viewer' || ticket.status !== "Valid") return;
 
+        let isUpdated: boolean = false;
         try {
-            const isUpdated: boolean = await Put<boolean>(API_URL, '/ticket/changeState', { params: { reservationCode: ticket.reservationCode } });
-            if (isUpdated) {
-                toast.success('Ticket state updated successfully');
-                fetchTickets();
-            } else {
-                toast.error('Ticket status has not been updated');
-            }
+            isUpdated = await Put<boolean>(API_URL, '/ticket/changeState', { params: { reservationCode: ticket.reservationCode } });
         } catch (error) {
-            toast.error('Unexpected error occurred');
+            const fetchError = error as FetchError;
+            toast.error('Fetch error occurred: ' + fetchError.body);
+        }
+
+        if (isUpdated) {
+            toast.success('Ticket state updated successfully');
+            fetchTickets();
+        } else {
+            toast.error('Ticket status has not been updated');
         }
     }
 

@@ -6,6 +6,13 @@ interface RequestOptions {
 	body?: any;
 }
 
+export interface FetchError {
+	status: number;
+	statusText: string;
+	url: string;
+	body: string;
+}
+
 /**
  * Uniwersalna funkcja GET do pobierania danych z backendu.
  * @param baseUrl - Bazowy adres URL API.
@@ -18,7 +25,6 @@ export const Get = async <T = any>(baseUrl: string, endpoint: string, options: R
 		const token: string = localStorage.getItem('token') ?? '';
 		const parsedToken: string = token ? JSON.parse(token) : '';
 
-		// Budowanie pełnego URL-a z parametrami zapytania, jeśli istnieją
 		const url = new URL(`${baseUrl}${endpoint}`);
 		if (options.params) {
 			Object.keys(options.params).forEach((key) =>
@@ -36,13 +42,13 @@ export const Get = async <T = any>(baseUrl: string, endpoint: string, options: R
 		});
 
 		if (!response.ok) {
-			const errorBody = await response.json().catch(() => null);
+			const errorBody = await response.text();
 			throw {
 				status: response.status,
 				statusText: response.statusText,
 				url: response.url,
 				body: errorBody,
-			};
+			} as FetchError;
 		}
 
 		const data = await response.json();
@@ -88,13 +94,13 @@ export const Post = async <T = any>(
 		});
 
 		if (!response.ok) {
-			const errorBody = await response.json().catch(() => null);
+			const errorBody = await response.text();
 			throw {
 				status: response.status,
 				statusText: response.statusText,
 				url: response.url,
 				body: errorBody,
-			};
+			} as FetchError;
 		}
 
 		const contentType = response.headers.get('Content-Type') || '';
@@ -144,13 +150,13 @@ export const Put = async <T = any>(
 		});
 
 		if (!response.ok) {
-			const errorBody = await response.json().catch(() => null);
+			const errorBody = await response.text();
 			throw {
 				status: response.status,
 				statusText: response.statusText,
 				url: response.url,
 				body: errorBody,
-			};
+			} as FetchError;
 		}
 
 		const contentType = response.headers.get('Content-Type') || '';

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import config from '../../../app_config.json';
 import FormField from '../../../components/FormField';
-import { Post } from '../../../services/BaseApi';
+import { FetchError, Post } from '../../../services/BaseApi';
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router";
 import { RegisterUserDto } from './RegisterPageTypes';
@@ -65,13 +65,9 @@ const RegisterPage: React.FC = () => {
             const result = await Post(API_URL, '/account/register', { body: postBody });
             toast.success(result.toString());
             navigate('/login');
-        } catch (error: any) {
-            console.log('Error creating user:', error);
-            if (error.status) {
-                toast.error(`Error creating user: ${error.status}`);
-            } else {
-                toast.error('Unexpected error occurred');
-            }
+        } catch (error) {
+            const fetchError = error as FetchError;
+            toast.error('Fetch error occurred: ' + fetchError.body);
         }
     }
 

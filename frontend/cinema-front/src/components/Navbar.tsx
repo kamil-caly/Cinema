@@ -49,7 +49,8 @@ const Navbar: React.FC = () => {
                         to="/tickets"
                         className={({ isActive }) =>
                             `text-xl mt-1 p-2 ms-5 rounded-full hover:bg-cinemaHoverPrimary 
-                            ${isActive ? 'text-cinemaTextSecondary bg-cinemaHoverSecondary' : ''}`
+                            ${isActive ? 'text-cinemaTextSecondary bg-cinemaHoverSecondary' : ''}
+                            ${state.isLogged ? 'flex' : 'hidden'}`
                         }
                     >
                         Tickets

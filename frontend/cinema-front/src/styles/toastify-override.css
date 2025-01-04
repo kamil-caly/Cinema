@@ -43,3 +43,10 @@
 .Toastify__toast-theme--dark.Toastify__toast--info > div div svg {
     @apply fill-cinemaTextViolet;
 }
+
+
+/* layout */
+.Toastify__toast-body > :nth-child(2) {
+    max-height: 780px;
+    overflow-y: auto;
+}

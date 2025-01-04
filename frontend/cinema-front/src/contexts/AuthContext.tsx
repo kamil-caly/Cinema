@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction, useEffect, useReducer } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import config from '../app_config.json';
-import { Get } from '../services/BaseApi';
+import { FetchError, Get } from '../services/BaseApi';
 import { UserDataDto } from '../types/Other';
+import { toast } from 'react-toastify';
 
 type AuthState = {
     isLogged: boolean;
@@ -49,19 +50,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
 
     useEffect(() => {
-        console.log('AuthContext useEffect');
         const token: string = getLSValue('token') ?? '';
         if (token) {
             const fetchUserDataDto = async () => {
                 if (API_URL) {
                     try {
                         const data = await Get<UserDataDto>(API_URL, '/account/getUserData', { params: { token: token } });
-                        debugger;
                         if (data !== null) {
                             dispatch({ type: 'SET_USER_DATA', content: data });
                         }
                     } catch (error) {
-                        console.error('Error fetching UserDataDto:', error);
+                        const fetchError = error as FetchError;
+                        toast.error('Fetch error occurred: ' + fetchError.body);
                         handleLogout();
                     }
                 }

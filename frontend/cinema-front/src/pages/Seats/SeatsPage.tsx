@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import config from '../../app_config.json';
-import { Get, Post } from "../../services/BaseApi";
+import { FetchError, Get, Post } from "../../services/BaseApi";
 import { CreateTicketDto, HallDto, SeatDto } from "./SeatsPageTypes";
 import { toast } from "react-toastify";
 import { useAuthContext } from "../../contexts/AuthContext";
@@ -32,7 +32,8 @@ const SeatsPage = () => {
                 const data = await Get<HallDto>(API_URL, '/hall/getHallForGivenSeance', { params: { dateTime: seanceDate ?? '' } });
                 setHallData(data);
             } catch (error) {
-                toast.error('Unexpected error occurred');
+                const fetchError = error as FetchError;
+                toast.error('Fetch error occurred: ' + fetchError.body);
             }
         }
     };
@@ -61,8 +62,8 @@ const SeatsPage = () => {
             setBookedSeats([]);
             fetchHallDto();
         } catch (error: any) {
-            console.log('Error during creating ticket:', error);
-            toast.error('Unexpected error occurred');
+            const fetchError = error as FetchError;
+            toast.error('Fetch error occurred: ' + fetchError.body);
         }
     }
 

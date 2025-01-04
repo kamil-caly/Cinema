@@ -1,7 +1,7 @@
 import FormField from "../../../components/FormField";
 import config from '../../../app_config.json';
 import { useEffect, useState } from "react";
-import { Post } from "../../../services/BaseApi";
+import { FetchError, Post } from "../../../services/BaseApi";
 import { toast } from "react-toastify";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { useAuthContext } from "../../../contexts/AuthContext";
@@ -48,17 +48,12 @@ const RegisterPage: React.FC = () => {
         try {
             const result = await Post(API_URL, '/account/login', { body: postBody });
             toast.success('Login success');
-            console.log('result: ', result);
             setLSValue('token', result.toString());
             dispatch({ type: 'LOGIN' });
             navigate('/movies')
-        } catch (error: any) {
-            console.log('Error during login:', error);
-            if (error.status) {
-                toast.error(`Error during login: ${error.status}`);
-            } else {
-                toast.error('Unexpected error occurred');
-            }
+        } catch (error) {
+            const fetchError = error as FetchError;
+            toast.error('Fetch error occurred: ' + fetchError.body);
         }
     }
 

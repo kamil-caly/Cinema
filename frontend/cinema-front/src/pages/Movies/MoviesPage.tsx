@@ -1,10 +1,11 @@
 // src/pages/Movies.tsx
 
 import React, { useEffect, useState } from 'react';
-import { Get } from '../../services/BaseApi';
+import { FetchError, Get } from '../../services/BaseApi';
 import config from '../../app_config.json';
 import MovieCard from '../../components/MovieCard';
 import { MovieDto } from './MoviesPageTypes';
+import { toast } from 'react-toastify';
 
 
 const MoviesPage: React.FC = () => {
@@ -18,7 +19,8 @@ const MoviesPage: React.FC = () => {
                     const data = await Get<MovieDto[]>(API_URL, '/movie/getAll');
                     setMovies(data);
                 } catch (error) {
-                    console.error('Error fetching movies:', error);
+                    const fetchError = error as FetchError;
+                    toast.error('Fetch error occurred: ' + fetchError.body);
                 }
             }
         };

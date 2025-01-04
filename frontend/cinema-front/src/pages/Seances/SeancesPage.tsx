@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import DatePicker from '../../components/DatePicker';
 import config from '../../app_config.json';
-import { Get } from '../../services/BaseApi';
+import { FetchError, Get } from '../../services/BaseApi';
 import moment from 'moment';
 import SeanceCard from '../../components/SeanceCard';
 import { useLocation } from 'react-router-dom';
 import { SeanceDto, SeanceDtoFlat } from './SeancesPageTypes';
+import { toast } from 'react-toastify';
 
 const SeancesPage: React.FC = () => {
     const location = useLocation();
@@ -49,7 +50,8 @@ const SeancesPage: React.FC = () => {
                     setSeances(dataFlat);
                     console.log('seance: ', dataFlat);
                 } catch (error) {
-                    console.error('Error fetching movies:', error);
+                    const fetchError = error as FetchError;
+                    toast.error('Fetch error occurred: ' + fetchError.body);
                 }
             }
         };
