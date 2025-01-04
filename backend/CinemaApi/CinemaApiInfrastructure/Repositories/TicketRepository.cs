@@ -1,4 +1,5 @@
 ﻿using CinemaApiDomain.Entities;
+using CinemaApiDomain.Entities.Enums;
 using CinemaApiDomain.Interfaces;
 using CinemaApiInfrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -20,16 +21,29 @@ namespace CinemaApiInfrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Ticket>> GetTicketsForUserAsync(string userEmail)
+        public async Task<Ticket?> GetTicketAsync(string reservationCode)
         {
             return await _dbContext.Tickets
-                .Where(t => t.UserEmail == userEmail)
+                .Include(t => t.Seance)
+                .FirstOrDefaultAsync(t => t.ReservationCode == reservationCode);
+        }
+
+        public async Task<IEnumerable<Ticket>> GetTicketsAsync(string? userEmail)
+        {
+            return await _dbContext.Tickets
+                .Where(t => userEmail != null ? t.UserEmail == userEmail : true)
                 .Include(t => t.Seance)
                 .ThenInclude(t => t.Movie)
                 .Include(t => t.Seance)
                 .ThenInclude(t => t.Hall)
                 .Include(t => t.Seats)
                 .ToListAsync();
+        }
+
+        public async Task UpdateStateAsync(Ticket ticket)
+        { 
+            _dbContext.Tickets.Update(ticket);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

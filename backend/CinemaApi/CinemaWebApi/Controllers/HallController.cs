@@ -17,7 +17,7 @@ namespace CinemaWebApi.Controllers
             _mediator = mediator;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Viewer")]
         [HttpGet("getHallForGivenSeance")]
         public async Task<ActionResult<HallDto?>> GetHallForGivenSeance([FromQuery] DateTime dateTime)
         {

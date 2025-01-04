@@ -8,6 +8,7 @@ using CinemaApiApplication.Movie.Queries;
 using CinemaApiApplication.Movie;
 using CinemaApiApplication.Ticket.Queries.GetTicketsForGivenUser;
 using CinemaApiApplication.Ticket.Commands.CreateTicketForGivenSeance;
+using CinemaApiApplication.Ticket.Commands.UpdateTicketState;
 
 namespace CinemaWebApi.Controllers
 {
@@ -33,11 +34,20 @@ namespace CinemaWebApi.Controllers
 
         [Authorize]
         [HttpGet("getTickets")]
-        public async Task<ActionResult<IEnumerable<UserTicketDto>>> GetTickets()
+        public async Task<ActionResult<IEnumerable<UserTicketDto>>> GetTickets([FromQuery] bool userRequest)
         {
-            var ticketDtos = await _mediator.Send(new GetTicketsForGivenUserQuery());
+            var ticketDtos = await _mediator.Send(new GetAllTicketsOrForGivenUserQuery(userRequest));
 
             return Ok(ticketDtos);
+        }
+
+        [Authorize(Roles = "Admin,Ticketer")]
+        [HttpPut("changeState")]
+        public async Task<ActionResult> ChangeTicketState([FromQuery] string reservationCode)
+        {
+            bool isUpdated = await _mediator.Send(new UpdateTicketStateCommand() { ReservationCode = reservationCode });
+
+            return Ok(isUpdated);
         }
     }
 }

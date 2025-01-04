@@ -1,5 +1,5 @@
 System sprzedaży biletów kinowych
-- Aplikacja umożliwia rezerwację biletów na seans kinowy oraz weryfikację ważności biletów.
+- Aplikacja umożliwia rezerwację biletów na seans kinowy oraz weryfikację ważności biletów. ✔
 
 - Użytkownik (widz), bez konieczności logowania się do systemu może przeglądać dostępny repertuar (data, godzina i czas trwania seansów; film, jego opis oraz zdjęcie). ✔
 
@@ -7,23 +7,25 @@ System sprzedaży biletów kinowych
 
 - Repertuar kinowy, sale oraz katalog filmów można/należy "zahardkodować w systemie". ✔
 
-- Bileter jest uprawnionym użytkownikiem, który posiada możliwość sprawdzenia ważności biletu dla wprowadzonego kodu. Bilet może w jednym z następujących stanów: nie istnieje, ważny, skasowany, nieważny.
+- Bileter jest uprawnionym użytkownikiem, który posiada możliwość sprawdzenia ważności biletu dla wprowadzonego kodu. Bilet może w jednym z następujących stanów: nie istnieje, ważny, skasowany, nieważny. ✔
 
-- Bilet jest ważny jedynie w czasie poprzedzającym 15 minut seans, traci zaś ważność z końcem seansu.
+- Bilet jest ważny jedynie w czasie poprzedzającym 15 minut seans, traci zaś ważność z końcem seansu. ✔
 
-- Bileter oprócz stanu biletu, powinien także zobaczyć ilość zarezerwowanych miejsc, nr sali oraz numery miejsc. Bileter powinien mieć możliwość skasowania biletu, a więc zmianę jego stanu z ważny do skasowany.
+- Bileter oprócz stanu biletu, powinien także zobaczyć ilość zarezerwowanych miejsc, nr sali oraz numery miejsc. Bileter powinien mieć możliwość skasowania biletu, a więc zmianę jego stanu z ważny do skasowany. ✔
+
+- Gdy do sensu zostało 15 min lub dłużej, BILETER podczas kasowania biletu zmienia jego stan: ważny -> skasowany. W przeciwnym wypadku zmienia jego stan: ważny -> nieważny. ✔
 
 - System powinien obsługiwać trzy klasy użytkowników:
 
 Widzowie: 
 - Przeglądanie repertuaru oraz kupno biletu na wskazany seans oraz rezerwacja wybranych miejsc na sali kinowej. ✔
-- Przeglądanie biletów z informacjami o seansie, statusie biletu itd.
+- Przeglądanie biletów z informacjami o seansie, statusie biletu itd. ✔
 
 Bileterzy:
-- Funkcja sprawdzenia ważności oraz skasowania biletu. Dostęp do funkcjonalności wymaga wcześniejszego zalogowania się do systemu.
+- Funkcja sprawdzenia ważności oraz skasowania biletu. Dostęp do funkcjonalności wymaga wcześniejszego zalogowania się do systemu. ✔
 
 Administrator/rzy:
-- Bez ograniczeń.
+- Bez ograniczeń. ✔
 
 Użytkownik niezalogowany:
 - Przeglądanie repertuaru kinowego. ✔

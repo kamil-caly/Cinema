@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import config from '../../app_config.json';
-import { Get } from "../../services/BaseApi";
+import { Get, Put } from "../../services/BaseApi";
 import { UserTicketDto } from "./TicketsPageTypes";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -15,25 +15,41 @@ const TicketPage = () => {
     const { state, dispatch } = useAuthContext();
 
     useEffect(() => {
-        if (!state.isLogged || state.userDto?.role === 'Ticketer') {
-            toast.error("Access only for logged users in role: 'Admin' or 'Viewer'");
+        if (!state.isLogged) {
+            toast.error("Access only for logged users");
             navigate('/login');
             return;
         }
 
-        const fetchTickets = async () => {
-            if (API_URL) {
-                try {
-                    const data = await Get<UserTicketDto[]>(API_URL, '/ticket/getTickets');
-                    setTickets(data);
-                } catch (error) {
-                    toast.error('Unexpected error occurred');
-                }
-            }
-        };
-
         fetchTickets();
     }, []);
+
+    const fetchTickets = async () => {
+        if (API_URL) {
+            try {
+                const data = await Get<UserTicketDto[]>(API_URL, '/ticket/getTickets', { params: { userRequest: (state.userDto?.role === 'Viewer').toString() } });
+                setTickets(data);
+            } catch (error) {
+                toast.error('Unexpected error occurred');
+            }
+        }
+    };
+
+    const changeTicketState = async (ticket: UserTicketDto) => {
+        if (state.userDto?.role === 'Viewer' || ticket.status !== "Valid") return;
+
+        try {
+            const isUpdated: boolean = await Put<boolean>(API_URL, '/ticket/changeState', { params: { reservationCode: ticket.reservationCode } });
+            if (isUpdated) {
+                toast.success('Ticket state updated successfully');
+                fetchTickets();
+            } else {
+                toast.error('Ticket status has not been updated');
+            }
+        } catch (error) {
+            toast.error('Unexpected error occurred');
+        }
+    }
 
     const renderTickets = () => {
         if (tickets.length === 0) {
@@ -66,6 +82,7 @@ const TicketPage = () => {
                                 className="bg-cinemaBgSecondary p-6 rounded-lg shadow-md h-fit"
                             >
                                 <h2 className="text-3xl font-semibold mb-2">{ticket.movieTitle}</h2>
+                                <p className="text-cinemaTextGrayLight text-lg mb-2 font-bold">User: {ticket.userEmail}</p>
                                 <p className="text-cinemaTextGrayStrong text-lg mb-2">Seats: {ticket.seatDtos.map(seat => `${seat.row}-${seat.num}`).join(', ')}</p>
                                 <p className={`text-lg font-semibold ${ticket.status === 'Valid' ? 'text-cinemaTextViolet' :
                                     ticket.status === 'Used' ? 'text-cinemaTextGreen' :
@@ -75,10 +92,19 @@ const TicketPage = () => {
                                 </p>
                                 <p className="text-cinemaTextGrayLight text-lg mt-2">Purchased: {convertToLocalDate(new Date(ticket.purchaseDate))}</p>
                                 <p className="text-cinemaTextGrayLight text-lg mt-2">Reservation Code: {ticket.reservationCode}</p>
+                                {state.userDto?.role !== 'Viewer' ?
+                                    <button
+                                        onClick={() => changeTicketState(ticket)}
+                                        className={`mt-8 rounded-lg w-full h-12 bg-cinemaBtnViolet text-cinemaTextPrimary 
+                                        font-semibold ${ticket.status !== 'Valid' ? 'opacity-50 cursor-default' : 'hover:bg-cinemaBtnVioletHover'}`}
+                                    >
+                                        Change state
+                                    </button>
+                                    : null}
                             </div>
                         ))}
                     </div>
-                </div>
+                </div >
             );
         });
     };
