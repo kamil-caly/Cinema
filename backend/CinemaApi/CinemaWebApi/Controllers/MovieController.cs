@@ -21,8 +21,7 @@ namespace CinemaWebApi.Controllers
         public async Task<ActionResult<IEnumerable<MovieDto>>> GetAll()
         {
             var moviesDto = await _mediator.Send(new GetAllMoviesQuery());
-
-            return Ok(moviesDto);
+            return Ok(moviesDto);   
         }
     }
 }

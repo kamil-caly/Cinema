@@ -44,30 +44,16 @@ namespace CinemaWebApi.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login([FromBody] LoginUserCommand command)
         {
-            try
-            {
-                string token = await _mediator.Send(command);
-                return Ok(token);
-            }
-            catch (Exception ex)
-            {
-                return Unauthorized(ex.Message);
-            }
+            string token = await _mediator.Send(command);
+            return Ok(token);
         }
 
         [Authorize]
         [HttpGet("getUserData")]
         public async Task<ActionResult<UserDataDto>> GetUserData([FromQuery] string token)
         {
-            try
-            {
-                UserDataDto userData = await _mediator.Send(new GetUserDataQuery(token));
-                return Ok(userData);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(401, new { message = "An error occurred while processing your request.", error = ex.Message });
-            }
+            UserDataDto userData = await _mediator.Send(new GetUserDataQuery(token));
+            return Ok(userData);
         }
     }
 }

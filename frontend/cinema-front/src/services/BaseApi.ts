@@ -72,7 +72,6 @@ export const Post = async <T = any>(
 	options: RequestOptions = {}
 ): Promise<T> => {
 	try {
-		debugger;
 		const token: string = localStorage.getItem('token') ?? '';
 		const parsedToken: string = token ? JSON.parse(token) : '';
 

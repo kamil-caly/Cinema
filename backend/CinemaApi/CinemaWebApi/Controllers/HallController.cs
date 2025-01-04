@@ -22,7 +22,6 @@ namespace CinemaWebApi.Controllers
         public async Task<ActionResult<HallDto?>> GetHallForGivenSeance([FromQuery] DateTime dateTime)
         {
             var hallDto = await _mediator.Send(new GetHallForGivenSeanceDateQuery(dateTime));
-
             return Ok(hallDto);
         }
     }

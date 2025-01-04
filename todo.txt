@@ -21,3 +21,5 @@ wraz z przyciskiem wyloguj. ✔
 20) Przeglądanie zakupionych biletów w nowej zakładce (dostęp dla zalogowanych użytkowników). ✔
 21) Wyświelanie biletów bileterowi wraz z przyciskiem do skasowania biletu. ✔
 22) Obsługa sprawdzania ważności biletu przez biletera. ✔
+23) Naprawa wyświetlania błędów api w notyfikacji 'toast'. ✔
+24) Testy jednostkowe backend'u (nie wiem jeszcze ile ich będzie).

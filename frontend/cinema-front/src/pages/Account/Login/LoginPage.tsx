@@ -52,6 +52,7 @@ const RegisterPage: React.FC = () => {
             dispatch({ type: 'LOGIN' });
             navigate('/movies')
         } catch (error) {
+            debugger;
             const fetchError = error as FetchError;
             toast.error('Fetch error occurred: ' + fetchError.body);
         }

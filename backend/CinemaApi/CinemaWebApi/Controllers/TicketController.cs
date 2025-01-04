@@ -28,7 +28,6 @@ namespace CinemaWebApi.Controllers
         public async Task<ActionResult<string>> CreateTicket([FromBody] CreateTicketForGivenSeanceCommand command)
         {
             string reservationCode = await _mediator.Send(command);
-
             return Ok(reservationCode);
         }
 
@@ -37,7 +36,6 @@ namespace CinemaWebApi.Controllers
         public async Task<ActionResult<IEnumerable<UserTicketDto>>> GetTickets([FromQuery] bool userRequest)
         {
             var ticketDtos = await _mediator.Send(new GetAllTicketsOrForGivenUserQuery(userRequest));
-
             return Ok(ticketDtos);
         }
 
@@ -46,7 +44,6 @@ namespace CinemaWebApi.Controllers
         public async Task<ActionResult> ChangeTicketState([FromQuery] string reservationCode)
         {
             bool isUpdated = await _mediator.Send(new UpdateTicketStateCommand() { ReservationCode = reservationCode });
-
             return Ok(isUpdated);
         }
     }

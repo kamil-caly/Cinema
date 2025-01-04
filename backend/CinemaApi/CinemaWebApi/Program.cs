@@ -3,6 +3,7 @@ using CinemaApiApplication.Extensions;
 using CinemaApiInfrastructure.Seeders;
 using Microsoft.AspNetCore.Mvc;
 using CinemaWebApi.Extensions;
+using CinemaWebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetRequiredService<CinemaApiSeeder>();

@@ -21,7 +21,6 @@ namespace CinemaWebApi.Controllers
         public async Task<ActionResult<IEnumerable<SeanceDto>>> GetAllForGivenDate([FromQuery] DateTime dateTime, [FromQuery] string? movieTitle)
         {
             var seancesDto = await _mediator.Send(new GetAllSeancesWithDetailsForGivenArgsQuery(dateTime, movieTitle)); 
-
             return Ok(seancesDto);
         }
     }
