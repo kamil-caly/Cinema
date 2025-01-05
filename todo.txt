@@ -22,4 +22,6 @@ wraz z przyciskiem wyloguj. ✔
 21) Wyświelanie biletów bileterowi wraz z przyciskiem do skasowania biletu. ✔
 22) Obsługa sprawdzania ważności biletu przez biletera. ✔
 23) Naprawa wyświetlania błędów api w notyfikacji 'toast'. ✔
-24) Testy jednostkowe backend'u (nie wiem jeszcze ile ich będzie).
+24) Testy jednostkowe warsty domeny. ✔
+25) Testy jednostkowe warstwy aplikacji (tylko folder 'Account'). ✔
+26) Testy jednostkowe warstwy infrastruktury.
