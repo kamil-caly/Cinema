@@ -24,4 +24,4 @@ wraz z przyciskiem wyloguj. ✔
 23) Naprawa wyświetlania błędów api w notyfikacji 'toast'. ✔
 24) Testy jednostkowe warsty domeny. ✔
 25) Testy jednostkowe warstwy aplikacji (tylko folder 'Account'). ✔
-26) Testy jednostkowe warstwy infrastruktury.
+26) Testy jednostkowe warstwy infrastruktury (testy seeder'a i dwa repozytoria: HallRepozitory i MovieRepository).
