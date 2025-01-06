@@ -12,6 +12,10 @@ namespace CinemaApiApplication.Seance
         public string? HallName { get; set; }
         public int? HallCapacity { get; set; }
 
+        public SeanceDto()
+        {
+        }
+
         public SeanceDto(CinemaApiDomain.Entities.Seance seance, CinemaApiDomain.Entities.Movie? movie, CinemaApiDomain.Entities.Hall? hall)
         {
             SeanceDate = seance.Date;

@@ -46,3 +46,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// for CinemaWebApi.Tests
+public partial class Program { }

@@ -2,7 +2,7 @@
 
 namespace CinemaApiApplication.Seance.Queries
 {
-    public class GetAllSeancesWithDetailsForGivenArgsQuery : IRequest<IEnumerable<SeanceDto>?>
+    public class GetAllSeancesWithDetailsForGivenArgsQuery : IRequest<IEnumerable<SeanceDto>>
     {
         public DateTime _dateTime { get; set; }
 
