@@ -23,13 +23,13 @@ jobs:
         dotnet-version: '8.0'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./backend/CinemaApi/CinemaApi.sln
 
     - name: Build the solution
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build ./backend/CinemaApi/CinemaApi.sln --configuration Release --no-restore
 
     - name: Publish the app
-      run: dotnet publish -c Release -o ./publish
+      run: dotnet publish ./backend/CinemaApi/CinemaApi.sln -c Release -o ./publish
 
     - name: Set environment variable ASPNETCORE_ENVIRONMENT to Production
       uses: azure/appservice-settings@v1
