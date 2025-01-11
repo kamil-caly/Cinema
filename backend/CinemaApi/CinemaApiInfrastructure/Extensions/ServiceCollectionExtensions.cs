@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Text;
 
 namespace CinemaApiInfrastructure.Extensions
@@ -15,10 +16,21 @@ namespace CinemaApiInfrastructure.Extensions
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<CinemaApiDbContext>(options => options.UseMySql(
-                configuration.GetConnectionString("Cinema"),
-                ServerVersion.AutoDetect(configuration.GetConnectionString("Cinema"))
-            ));
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            if (environment == "Development")
+            {
+                services.AddDbContext<CinemaApiDbContext>(options =>
+                    options.UseMySql(
+                        configuration.GetConnectionString("Cinema"),
+                        ServerVersion.AutoDetect(configuration.GetConnectionString("Cinema"))
+                    ));
+            }
+            else
+            {
+                services.AddDbContext<CinemaApiDbContext>(options =>
+                    options.UseSqlServer(configuration.GetConnectionString("Cinema")));
+            }
 
             services.AddScoped<CinemaApiSeeder>();
             services.AddScoped<IMovieRepository, MovieRepository>();
