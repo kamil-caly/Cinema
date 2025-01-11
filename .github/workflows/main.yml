@@ -1,0 +1,47 @@
+name: Deploy to Azure
+
+on:
+  push:
+    branches:
+      - release
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: cinema-api
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build the solution
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Publish the app
+      run: dotnet publish -c Release -o ./publish
+
+    - name: Set environment variable ASPNETCORE_ENVIRONMENT to Production
+      uses: azure/appservice-settings@v1
+      with:
+        app-name: ${{ AZURE_WEBAPP_NAME }}
+        settings: |
+          ASPNETCORE_ENVIRONMENT=Production
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ AZURE_WEBAPP_NAME }}
+        slot-name: production
+        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_CINEMA_API }}
+        package: ./publish
