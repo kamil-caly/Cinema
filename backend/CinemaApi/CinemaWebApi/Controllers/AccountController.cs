@@ -1,15 +1,11 @@
-﻿using CinemaApiApplication.Movie.Queries;
-using CinemaApiApplication.Movie;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using CinemaApiApplication.Account.Commands.RegisterUser;
-using FluentValidation;
+﻿using CinemaApiApplication.Account;
 using CinemaApiApplication.Account.Commands.LoginUser;
-using CinemaApiApplication.Account;
-using Microsoft.AspNetCore.Authorization;
-using CinemaApiApplication.Seance.Queries;
-using System;
+using CinemaApiApplication.Account.Commands.RegisterUser;
 using CinemaApiApplication.Account.Queries.GetUserData;
+using FluentValidation;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaWebApi.Controllers
 {
