@@ -35,8 +35,10 @@ jobs:
       uses: azure/appservice-settings@v1
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        settings: |
-          ASPNETCORE_ENVIRONMENT=Production
+        app-settings-json: |
+          {
+            "ASPNETCORE_ENVIRONMENT": "Production"
+          }
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
