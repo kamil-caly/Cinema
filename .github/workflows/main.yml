@@ -28,6 +28,10 @@ jobs:
     - name: Build the solution
       run: dotnet build ./backend/CinemaApi/CinemaApi.sln --configuration Release --no-restore
 
+    - name: Run tests
+      run: dotnet test ./backend/CinemaApi/CinemaApi.sln --no-build --configuration Release --logger trx
+      continue-on-error: false
+
     - name: Publish the app
       run: dotnet publish ./backend/CinemaApi/CinemaWebApi/CinemaWebApi.csproj --configuration Release --no-build -o ./publish
 
