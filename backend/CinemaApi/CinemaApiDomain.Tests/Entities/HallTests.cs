@@ -21,7 +21,7 @@ namespace CinemaApiDomain.Entities.Tests
             // assert
             hall.Capacity.Should().Be(16);
             hall2.Capacity.Should().Be(361);
-            hall3.Capacity.Should().Be(1023);
+            hall3.Capacity.Should().Be(1024);
         }
 
         [Fact()]
