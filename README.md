@@ -4,7 +4,6 @@
 
 The Cinema Ticket Booking System is a complete platform for reserving movie tickets, managing ticket validity, and accessing cinema schedules. It supports multiple user roles with specific functionalities, such as customers, ticket clerks, and administrators.
 
----
 
 ## Features
 
@@ -28,7 +27,6 @@ The Cinema Ticket Booking System is a complete platform for reserving movie tick
 ### Unauthenticated Users
 - Browse movie schedules and details. ✔
 
----
 
 ## Technologies Used
 
@@ -49,7 +47,6 @@ The Cinema Ticket Booking System is a complete platform for reserving movie tick
 - **CI/CD with Azure Pipelines**: Automates deployment processes for both backend and frontend.
 - **Automated Tests**: Includes unit tests for backend: domain, application, and infrastructure layers, as well as controller tests.
 
----
 
 ## License
 This project is open source and available under the [GPL-3.0 License](LICENSE).
