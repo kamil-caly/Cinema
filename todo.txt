@@ -28,4 +28,5 @@ wraz z przyciskiem wyloguj. ✔
 27) Testy kontrolera (TicketController i SeanceController). ✔
 28) Utorzenie i połączenie się z bazą mssql na portalu azure. ✔
 29) Wdrożenie części backend'owej na azure. ✔
-30) Wdrożenie części backend'owej CI/CD wraz z testami automatycznymi.
+30) Wdrożenie części backend'owej CI/CD wraz z testami automatycznymi. ✔
+31) Wdrożenie części frontend'owej CI/CD. ✔
