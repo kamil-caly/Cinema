@@ -17,8 +17,15 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowLocalhost3000", builder =>
     {
         builder.WithOrigins("http://localhost:3000")
-               .AllowAnyHeader()  
-               .AllowAnyMethod();                    
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+
+    options.AddPolicy("AllowAzure", builder =>
+    {
+        builder.WithOrigins("https://cinema-front.azurewebsites.net")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
     });
 });
 
@@ -36,6 +43,7 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseCors("AllowLocalhost3000");
+app.UseCors("AllowAzure");
 
 app.UseAuthorization();
 
