@@ -1,5 +1,4 @@
 import FormField from "../../../components/FormField";
-import config from '../../../app_config.json';
 import { useEffect, useState } from "react";
 import { FetchError, Post } from "../../../services/BaseApi";
 import { toast } from "react-toastify";
@@ -14,7 +13,7 @@ interface SignInAccountErrors {
 }
 
 const RegisterPage: React.FC = () => {
-    const API_URL = config.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL ?? '';
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [errors, setErrors] = useState<SignInAccountErrors>();

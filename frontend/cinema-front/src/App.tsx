@@ -15,6 +15,7 @@ import TicketsPage from './pages/Tickets/TicketsPage';
 
 
 const App: React.FC = () => {
+    console.log('process.env: ', process.env)
     return (
         <AuthProvider>
             <Router>

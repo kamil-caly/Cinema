@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction, useEffect, useReducer } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import config from '../app_config.json';
 import { FetchError, Get } from '../services/BaseApi';
 import { UserDataDto } from '../types/Other';
 import { toast } from 'react-toastify';
@@ -40,7 +39,7 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const API_URL = config.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL ?? '';
     const [getLSValue, setLsValue] = useLocalStorage();
     const [state, dispatch] = useReducer(authReducer, initialState);
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import config from '../../app_config.json';
 import { FetchError, Get, Post } from "../../services/BaseApi";
 import { CreateTicketDto, HallDto, SeatDto } from "./SeatsPageTypes";
 import { toast } from "react-toastify";
@@ -9,7 +8,7 @@ import CinemaHall from "../../components/CinemaHall";
 
 
 const SeatsPage = () => {
-    const API_URL = config.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL ?? '';
     const { seanceDate } = useParams();
     const { state, dispatch } = useAuthContext();
     const navigate = useNavigate();

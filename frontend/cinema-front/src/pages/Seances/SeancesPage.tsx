@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import DatePicker from '../../components/DatePicker';
-import config from '../../app_config.json';
 import { FetchError, Get } from '../../services/BaseApi';
 import moment from 'moment';
 import SeanceCard from '../../components/SeanceCard';
@@ -12,7 +11,7 @@ const SeancesPage: React.FC = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const paramsMovieTitle = params.get('title');
-    const API_URL = config.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL ?? '';
     const [seances, setSeances] = useState<SeanceDtoFlat[]>([]);
     const [currentDate, setCurrentDate] = useState<Date>(new Date());
     const [searchTxt, setSearchTxt] = useState<string>(paramsMovieTitle ?? '');

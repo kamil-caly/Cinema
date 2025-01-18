@@ -1,5 +1,4 @@
 import { useEffect, useReducer, useState } from "react";
-import config from '../../app_config.json';
 import { FetchError, Get, Put } from "../../services/BaseApi";
 import { UserTicketDto } from "./TicketsPageTypes";
 import { toast } from "react-toastify";
@@ -9,7 +8,7 @@ import { convertToLocalDate } from "../../utils/DateConverter";
 
 
 const TicketPage = () => {
-    const API_URL = config.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL ?? '';
     const [tickets, setTickets] = useState<UserTicketDto[]>([]);
     const navigate = useNavigate();
     const { state, dispatch } = useAuthContext();

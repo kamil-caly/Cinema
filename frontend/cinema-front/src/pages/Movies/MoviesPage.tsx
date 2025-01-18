@@ -2,14 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { FetchError, Get } from '../../services/BaseApi';
-import config from '../../app_config.json';
 import MovieCard from '../../components/MovieCard';
 import { MovieDto } from './MoviesPageTypes';
 import { toast } from 'react-toastify';
 
 
 const MoviesPage: React.FC = () => {
-    const API_URL = config.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL ?? '';
     const [movies, setMovies] = useState<MovieDto[]>([]);
 
     useEffect(() => {
