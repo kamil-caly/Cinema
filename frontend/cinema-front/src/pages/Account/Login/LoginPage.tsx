@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { useAuthContext } from "../../../contexts/AuthContext";
 import { LoginUserDto } from "./LoginPageTypes";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface SignInAccountErrors {
     emailError?: string;
@@ -83,7 +83,7 @@ const RegisterPage: React.FC = () => {
                 <button onClick={logInClick} className="w-full rounded-lg h-12 mb-4 bg-cinemaBtnViolet text-cinemaTextPrimary font-semibold hover:bg-cinemaBtnVioletHover">Log in to your account</button>
                 <div>
                     <span className='text-cinemaTextGrayStrong'>Don’t have an account yet?</span>
-                    <a href='/register' className='text-cinemaTextViolet ms-2 font-semibold cursor-pointer hover:underline'>Sign up</a>
+                    <Link to='/register' className='text-cinemaTextViolet ms-2 font-semibold cursor-pointer hover:underline'>Sign up</Link>
                 </div>
             </div>
         </div>

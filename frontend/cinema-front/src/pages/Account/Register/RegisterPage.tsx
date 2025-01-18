@@ -5,6 +5,7 @@ import { FetchError, Post } from '../../../services/BaseApi';
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router";
 import { RegisterUserDto } from './RegisterPageTypes';
+import { Link } from 'react-router-dom';
 
 interface CreateAccountErrors {
     firstNameError?: string;
@@ -124,7 +125,7 @@ const RegisterPage: React.FC = () => {
                 <button onClick={createAccoutClick} className="w-full rounded-lg h-12 mb-4 bg-cinemaBtnViolet text-cinemaTextPrimary font-semibold hover:bg-cinemaBtnVioletHover">Create an account</button>
                 <div>
                     <span className='text-cinemaTextGrayStrong'>Already have an account?</span>
-                    <a href='/login' className='text-cinemaTextViolet ms-2 font-semibold cursor-pointer hover:underline'>Login here</a>
+                    <Link to='/login' className='text-cinemaTextViolet ms-2 font-semibold cursor-pointer hover:underline'>Login here</Link>
                 </div>
             </div>
         </div>
