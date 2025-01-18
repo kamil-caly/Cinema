@@ -29,7 +29,7 @@ namespace CinemaApiInfrastructure.Extensions
             else
             {
                 services.AddDbContext<CinemaApiDbContext>(options =>
-                    options.UseSqlServer(configuration.GetConnectionString("Cinema")));
+                    options.UseSqlServer(Environment.GetEnvironmentVariable("CINEMA_CONNECTION_STRING") ?? ""));
             }
 
             services.AddScoped<CinemaApiSeeder>();
