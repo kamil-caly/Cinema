@@ -42,8 +42,16 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowLocalhost3000");
-app.UseCors("AllowAzure");
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+
+if (environment == "Development")
+{
+    app.UseCors("AllowLocalhost3000");
+}
+else
+{
+    app.UseCors("AllowAzure");
+}
 
 app.UseAuthorization();
 
